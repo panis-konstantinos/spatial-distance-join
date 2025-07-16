@@ -20,4 +20,5 @@ This setup was used to evaluate performance and scalability of the algorithms on
 
 # Methodology
 The algorithm was implemented in the Python programming language using the Spark API for Python, PySpark, with a focus on leveraging Spark’s parallel processing capabilities. Key goals included execution performance and scalability. Data processing was implemented using Spark DataFrames, in order to optimize both physical and logical execution plans (through the Catalyst Optimizer) and improve in-memory storage efficiency.
+
 The algorithm consists of two main parts. The first part involves partitioning the points into groups by dividing the space into grid cells and assigning each point to a cell. At this stage, it is important to replicate points into neighboring cells that are within a distance less than or equal to the threshold ε, in order to ensure that no candidate pair (r, s) is missed. The second part concerns the join of the two datasets, R and S, to form candidate pairs and compute the distance between them. After the distance is calculated, filtering based on ε and k thresholds is straightforward.
