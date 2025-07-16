@@ -7,7 +7,7 @@ A distributed Spark application for analyzing spatial proximity between data poi
 
 To address these queries, algorithms were designed and implemented using point grid partitioning techniques, aiming to reduce computational cost and avoid exhaustive pairwise comparisons. The implementation was based on the Spark DataFrame API and executed on real large-scale datasets. Through experimental evaluation, the performance of the algorithms was recorded for different parameter values (ε, k), highlighting the advantages of parallel processing and spatial proximity-based optimization. The results confirm the effectiveness of the approach in terms of both execution time and scalability.
 
-# Development & Test Environment
+## Development & Test Environment
 The project was originally developed and tested on a 4-node cluster. Each node ran:
 
 * **OS**: Ubuntu 16.04.3 LTS
