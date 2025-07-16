@@ -39,4 +39,6 @@ In order to run the application run the following commands for queryA and queryB
 /usr/local/spark/bin/spark-submit --master yarn --deploy-mode client --driver-memory 1g --executor-memory 3g --executor-cores 4 --num-executors 4 --conf spark.query.pathA="hdfs:///input/AREALM.csv" --conf spark.query.pathR="hdfs:///input/RAILS.csv" --conf spark.query.output="hdfs:///resultsB" --conf spark.query.eps=0.003 --conf spark.query.cellFactor=4 --conf spark.query.k=200 spatial_join.py
 ```
 
+You can find the query results of the above executions under the folder [output](output).
+
 **NOTE**: This project assumes a working Spark and Hadoop environment. If you don't have one, consider using a single-node setup with Spark standalone for testing purposes.
