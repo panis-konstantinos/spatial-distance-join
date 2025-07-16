@@ -1,9 +1,9 @@
 ## Overview
 A distributed Spark application for analyzing spatial proximity between data points of two large datasets using Apache Spark (PySpark) for the computations and Hadoop File System for file storage. Given two CSV files (denoted as R and S) containing data poins (id, longitude, latitude), the app computes:
 
-* The number of point pairs (r in R, s in S) within a given distance ε
+* queryA: The number of point pairs (r in R, s in S) within a given distance ε 
 
-* All points in R that have at least k neighbors from S within distance ε
+* queryB: All points in R that have at least k neighbors from S within distance ε 
 
 To address these queries, algorithms were designed and implemented using point grid partitioning techniques, aiming to reduce computational cost and avoid exhaustive pairwise comparisons. The implementation was based on the Spark DataFrame API and executed on real large-scale datasets. Through experimental evaluation, the performance of the algorithms was recorded for different parameter values (ε, k), highlighting the advantages of parallel processing and spatial proximity-based optimization. The results confirm the effectiveness of the approach in terms of both execution time and scalability.
 
@@ -25,3 +25,10 @@ The algorithm consists of two main parts. The first part involves partitioning t
 
 ## Experiment results
 In order to assess the algorithm's efficiency we measured its execution time for different parameter values and available resources distribution. It is noted that execution time was measured from the start of the application to the computation of the final result. The time required to export the results to files in HDFS was not included in the measurements. You can find the detailed experiment results along with visualisations under the folder [experiment_results](experiment_results).
+
+## How to run
+In order to run the application run the following commands for queryA and queryB in bash
+```
+/usr/local/spark/bin/spark-submit --master yarn --deploy-mode client --driver-memory 1g --executor-memory 3g --executor-cores 4 --num-executors 4 --conf spark.query.pathA="hdfs:///input/AREALM.csv" --conf spark.query.pathR="hdfs:///input/RAILS.csv" --conf spark.query.output="hdfs:///resultsA" --conf spark.query.eps=0.003 --conf spark.query.cellFactor=4 spatial_join.py
+```
+
