@@ -1,4 +1,4 @@
-# Overview
+## Overview
 A distributed Spark application for analyzing spatial proximity between data points of two large datasets using Apache Spark (PySpark) for the computations and Hadoop File System for file storage. Given two CSV files (denoted as R and S) containing data poins (id, longitude, latitude), the app computes:
 
 * The number of point pairs (r in R, s in S) within a given distance ε
@@ -18,10 +18,10 @@ The project was originally developed and tested on a 4-node cluster. Each node r
 
 This setup was used to evaluate performance and scalability of the algorithms on real distributed infrastructure.The project was originally tested and developed on a 4-node cluster setup. Each node run on Ubuntu 16.04.3 LTS, had 6144ΜΒ RAM, 4 cores, 10GB hard disk and Apache Spark (version 3.5.1) and Apache Hadoop (version 3.2.1) installed.
 
-# Methodology
+## Methodology
 The algorithm was implemented in the Python programming language using the Spark API for Python, PySpark, with a focus on leveraging Spark’s parallel processing capabilities. Key goals included execution performance and scalability. Data processing was implemented using Spark DataFrames, in order to optimize both physical and logical execution plans (through the Catalyst Optimizer) and improve in-memory storage efficiency.
 
 The algorithm consists of two main parts. The first part involves partitioning the points into groups by dividing the space into grid cells and assigning each point to a cell. At this stage, it is important to replicate points into neighboring cells that are within a distance less than or equal to the threshold ε, in order to ensure that no candidate pair (r, s) is missed. The second part concerns the join of the two datasets, R and S, to form candidate pairs and compute the distance between them. After the distance is calculated, filtering based on ε and k thresholds is straightforward.
 
-# Experiment results
+## Experiment results
 In order to assess the algorithm's efficiency we measured its execution time for different parameter values and available resources distribution. It is noted that execution time was measured from the start of the application to the computation of the final result. The time required to export the results to files in HDFS was not included in the measurements. You can find the detailed experiment results along with visualisations under the folder [experiment_results](experiment_results).
