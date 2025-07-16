@@ -28,7 +28,8 @@ In order to assess the algorithm's efficiency we measured its execution time for
 
 ## How to run
 In order to run the application run the following commands for queryA and queryB in bash
-```
+
+- queryA:```
 /usr/local/spark/bin/spark-submit --master yarn --deploy-mode client --driver-memory 1g --executor-memory 3g --executor-cores 4 --num-executors 4 --conf spark.query.pathA="hdfs:///input/AREALM.csv" --conf spark.query.pathR="hdfs:///input/RAILS.csv" --conf spark.query.output="hdfs:///resultsA" --conf spark.query.eps=0.003 --conf spark.query.cellFactor=4 spatial_join.py
 ```
 
