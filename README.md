@@ -27,7 +27,7 @@ The algorithm consists of two main parts. The first part involves partitioning t
 In order to assess the algorithm's efficiency we measured its execution time for different parameter values and available resources distribution. It is noted that execution time was measured from the start of the application to the computation of the final result. The time required to export the results to files in HDFS was not included in the measurements. You can find the detailed experiment results along with visualisations under the folder [experiment_results](experiment_results).
 
 ## How to run
-In order to run the application run the following commands for queryA and queryB in bash
+In order to run the application run the following commands for queryA and queryB respectively in bash.
 
 - **queryA** (eps=0.003, cellFactor=4):
 ```
@@ -39,3 +39,4 @@ In order to run the application run the following commands for queryA and queryB
 /usr/local/spark/bin/spark-submit --master yarn --deploy-mode client --driver-memory 1g --executor-memory 3g --executor-cores 4 --num-executors 4 --conf spark.query.pathA="hdfs:///input/AREALM.csv" --conf spark.query.pathR="hdfs:///input/RAILS.csv" --conf spark.query.output="hdfs:///resultsB" --conf spark.query.eps=0.003 --conf spark.query.cellFactor=4 --conf spark.query.k=200 spatial_join.py
 ```
 
+**NOTE**: This project assumes a working Spark and Hadoop environment. If you don't have one, consider using a single-node setup with Spark standalone for testing purposes.
