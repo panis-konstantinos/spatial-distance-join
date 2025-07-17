@@ -7,6 +7,9 @@ A distributed Spark application for analyzing spatial proximity between data poi
 
 To address these queries, algorithms were designed and implemented using point grid partitioning techniques, aiming to reduce computational cost and avoid exhaustive pairwise comparisons. The implementation was based on the Spark DataFrame API and executed on real large-scale datasets. Through experimental evaluation, the performance of the algorithms was recorded for different parameter values (ε, k), highlighting the advantages of parallel processing and spatial proximity-based optimization. The results confirm the effectiveness of the approach in terms of both execution time and scalability.
 
+## Dataset
+The dataset consists of two tab-separated CSV files, namely RAILS and AREALM, which are subset of TIGER dataset. Each file contains approximately 3.5 million records with three columns: id, longitude and latitude. For exhibition reasons, a subset of each file has been uploaded to [data](data) folder.
+
 ## Development & Test Environment
 The project was originally developed and tested on a 4-node cluster. Each node ran:
 
