@@ -29,3 +29,4 @@ As shown in the table below as the value of the cell_factor parameter increases,
 | 5.2      | 0.006 | 10          | 1003   | 528    | 361,872,569      | 191.27         | 200  | 200.14         |
 | 5.3      | 0.012 | 10          | 501    | 264    | 1,145,967,946    | 268.65         | 200  | 304.27         |
 
+**NOTE**: Visualisation of the above experiment results is available in [experiment_results](experiment_results/calculation_scens_plot.png)
