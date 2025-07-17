@@ -30,3 +30,34 @@ As shown in the table below as the value of the cell_factor parameter increases,
 | 5.3      | 0.012 | 10          | 501    | 264    | 1,145,967,946    | 268.65         | 200  | 304.27         |
 
 **NOTE**: Visualisation of the above experiment results is available in [experiment_results](calculation_scens_plot.png)
+
+
+## Resources Distribution Scenarios
+We tested four different resource allocation configurations for each value of the parameter 𝜀 and recorded the execution time of Query A. In all tests, the parameter cell_factor was set to 4. The four different scenarios correspond to the following cases:
+
+* Use of a single machine with all cores (scenarios 1.*)
+  
+* Distribution of the computational load across all available resources (scenarios 2.*)
+
+* Maximum use of all available resources with small executors (scenarios 3.*)
+
+* Fewer executors with higher computational power per executor (scenarios 4.*)
+
+We can observe that the best overall performance in terms of execution time is achieved when the number of executors is set to 4 ( scenarios 4.* ). Specifically, in this case, the execution times in seconds for 𝜀 values of 0.003, 0.006, and 0.012 are 153.18, 169.92, and 186.55 respectively. These times are relatively close to those in the scenario where 8 executors are used in total (160.65, 165.50, and 210.31 respectively). However, it appears that in the first case (4 executors), better scalability is achieved, as the execution time for 𝜀 = 0.012 is significantly lower than in the second case (8 executors). This indicates that our algorithmic approach performs better with fewer resources but with greater computational power per executor. This is further confirmed by the fact that when all available resources are used (16 executors) with lower computational power per executor, execution time increases dramatically, even exceeding that of scenarios 1.*, where a single executor is used.
+
+| Scenario | Description              | Master | DeployMode | DriverMem. | Exec.Mem. | Exec.Cores | #Execs | 𝜀     | Exec.Time (s) |
+|----------|--------------------------|--------|------------|------------|-----------|------------|--------|-------|----------------|
+| 1.1      | SingleExecutor           | yarn   | client     | 1g         | 1g        | 4          | 1      | 0.003 | 162.25         |
+| 1.2      | SingleExecutor           | yarn   | client     | 1g         | 1g        | 4          | 1      | 0.006 | 181.69         |
+| 1.3      | SingleExecutor           | yarn   | client     | 1g         | 1g        | 4          | 1      | 0.012 | 253.62         |
+| 2.1      | MultiExec. (Moderate)    | yarn   | client     | 1g         | 2g        | 2          | 8      | 0.003 | 160.65         |
+| 2.2      | MultiExec. (Moderate)    | yarn   | client     | 1g         | 2g        | 2          | 8      | 0.006 | 165.50         |
+| 2.3      | MultiExec. (Moderate)    | yarn   | client     | 1g         | 2g        | 2          | 8      | 0.012 | 210.31         |
+| 3.1      | MaxParallel (SmallExecs) | yarn   | client     | 2g         | 1500m     | 1          | 16     | 0.003 | 175.75         |
+| 3.2      | MaxParallel (SmallExecs) | yarn   | client     | 2g         | 1500m     | 1          | 16     | 0.006 | 180.94         |
+| 3.3      | MaxParallel (SmallExecs) | yarn   | client     | 2g         | 1500m     | 1          | 16     | 0.012 | 268.20         |
+| 4.1      | FewerExec. (MoreCores)   | yarn   | client     | 1g         | 3g        | 4          | 4      | 0.003 | 153.18         |
+| 4.2      | FewerExec. (MoreCores)   | yarn   | client     | 1g         | 3g        | 4          | 4      | 0.006 | 169.92         |
+| 4.3      | FewerExec. (MoreCores)   | yarn   | client     | 1g         | 3g        | 4          | 4      | 0.012 | 186.55         |
+
+**NOTE**: Visualisation of the above experiment results is available in [experiment_results](resources_scens_plot.png)
