@@ -19,8 +19,7 @@ The project was originally developed and tested on a 4-node cluster. Each node r
 
 * **Software**: Apache Spark v3.5.1, Apache Hadoop v3.2.1
 
-This setup was used to evaluate performance and scalability of the algorithms on real distributed infrastructure.The project was originally tested and developed on a 4-node cluster setup. Each node run on Ubuntu 16.04.3 LTS, had 6144ΜΒ RAM, 4 cores, 10GB hard disk and Apache Spark (version 3.5.1) and Apache Hadoop (version 3.2.1) installed.
-
+This setup was used to evaluate performance and scalability of the algorithms on real distributed infrastructure.
 ## Methodology
 The algorithm was implemented in the Python programming language using the Spark API for Python, PySpark, with a focus on leveraging Spark’s parallel processing capabilities. Key goals included execution performance and scalability. Data processing was implemented using Spark DataFrames, in order to optimize both physical and logical execution plans (through the Catalyst Optimizer) and improve in-memory storage efficiency.
 
